@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BladeMill.BLL.Models.ProgramExe>
+@using BladeMill.BLL.Models
+@using BladeMill.BLL.Services
+@inject UserServiceWithoutDatabase _userService
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Index</h1>
+
+<p>
+    @{
+
+        var user = _userService.GetUserFirstLastName();
+    }
+    @*<a asp-action="Create">Create New</a>*@
+    Welcome from service @user
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="First().Name"></label>
+            </th>
+            <th>
+                <label asp-for="First().MainDir"></label>
+            </th>
+                        <th>
+                <label asp-for="First().SubDir"></label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.MainDir
+            </td>
+            <td>
+                @item.SubDir
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="StartProgramExe" asp-route-id="@item.Id">Wybierz program</a> 
+
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@*@section Scripts
+{
+    <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function () {
+            var button = document.getElementById('button');
+            button.addEventListener('click', function () {
+                var test = "@MyFunction()";
+                console.log(test);
+             });
+        });
+    </script>
+}*@
+

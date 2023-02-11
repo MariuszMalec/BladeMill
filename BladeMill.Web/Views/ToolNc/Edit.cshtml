@@ -1,0 +1,88 @@
+﻿@model BladeMill.BLL.Models.Tool
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ToolNc</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="NcProgram" class="control-label"></label>
+                <input asp-for="NcProgram" class="form-control" />
+                <span asp-validation-for="NcProgram" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="NcToolSet" class="control-label"></label>
+                <input asp-for="NcToolSet" class="form-control" />
+                <span asp-validation-for="NcToolSet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcToolID" class="control-label"></label>
+                <input asp-for="NcToolID" class="form-control" />
+                <span asp-validation-for="NcToolID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcToolIDPreLoad" class="control-label"></label>
+                <input asp-for="NcToolIDPreLoad" class="form-control" />
+                <span asp-validation-for="NcToolIDPreLoad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcToollen" class="control-label"></label>
+                <input asp-for="NcToollen" class="form-control" />
+                <span asp-validation-for="NcToollen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcToolDiam" class="control-label"></label>
+                <input asp-for="NcToolDiam" class="form-control" />
+                <span asp-validation-for="NcToolDiam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcToolcrn" class="control-label"></label>
+                <input asp-for="NcToolcrn" class="form-control" />
+                <span asp-validation-for="NcToolcrn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcSpindle" class="control-label"></label>
+                <input asp-for="NcSpindle" class="form-control" />
+                <span asp-validation-for="NcSpindle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcFeedrate" class="control-label"></label>
+                <input asp-for="NcFeedrate" class="form-control" />
+                <span asp-validation-for="NcFeedrate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NcMachine" class="control-label"></label>
+                <input asp-for="NcMachine" class="form-control" />
+                <span asp-validation-for="NcMachine" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

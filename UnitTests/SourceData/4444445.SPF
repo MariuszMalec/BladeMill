@@ -1,0 +1,696 @@
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:120
+N13 ; OPER. DESCR.: Side Milling/romb pwk
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:35:57.415699
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:120")
+N21 TRAFOOF
+N22 D0
+N23 G90 G94
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:120 - Side Milling/romb pwk ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 MSG(" TLID=940643 D=32.0 R=0.8 Ang=0.0 Len=105.0 ")
+N30 TRAFOOF
+N31 D0
+N32 G0 G53 Z290 B0
+N33 G0 X200
+N34 G0 Y150
+N35 T="7740643"
+N36 G0 X500
+RAPORT("T44444","ToolChangeStart 7740643")
+N37 M6
+RAPORT("T44444","ToolChangeEnd")
+N38 ; (Preloading tool)
+N39 T="7740729"
+N40 G0 X200
+N41 STOPRE
+N42 S1989 M03
+N43 STOPRE
+N44 TOL(0.1,1,1)
+N45 G0 X155.450 A308.0200
+N46 TRAORI
+N47 G54 D1
+N48 D1 
+STOPRE
+E_ZDARZ=400002
+;ACS_PREFINISH_ROOT=7740643
+STOPRE
+N49 ; DELTA A > 40.1
+N50 TRAFOOF
+N51 STOPRE
+N52 G0 G53 D0 Z265.000
+N53 G1 G53 A308.0200 F10000
+N54 TRAORI
+N55 G54 D1
+N56 TRANS 
+N57 G00 X155.450 Y75.846 Z6.187 A308.0200 B0.0000 
+N58 M346 ; chlodziwo mgla
+N59 X155.450 Y36.456 Z-24.610 
+N60 G01 X155.450 Y30.300 Z-16.729 F1989 
+N61 X155.450 Y29.684 Z-15.941 
+N62 X155.450 Y19.834 Z-3.333 
+N63 X155.450 Y16.404 Z1.056 
+N64 X155.450 Y6.554 Z13.664 
+N65 X155.450 Y0.397 Z21.544 
+N66 G00 X155.450 Y12.214 Z30.784 
+RAPORT("T44444","Side Milling:120 End")
+N68 ;trailer : concat=None
+; points cnt = 6
+N69 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N70 FGROUP()
+N71 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:121
+N13 ; OPER. DESCR.: Semi Finishing root leading side FEEB
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:35:59.909215
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:121")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:121 - Semi Finishing root leading side FEEB ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A308.0200
+N36 TRAORI
+N37 G54 D2
+N38 D2 
+STOPRE
+E_ZDARZ=400002
+;ACS_PREFINISH_ROOT=7740643
+STOPRE
+N39 ; DELTA A > 40.1
+N40 TRAFOOF
+N41 STOPRE
+N42 G0 G53 D0 Z265.000
+N43 G1 G53 A308.0200 F10000
+N44 TRAORI
+N45 G54 D2
+N46 TRANS 
+N47 G00 X183.950 Y44.859 Z-13.519 A308.0200 B0.0000 
+N48 M346 ; chlodziwo mgla
+N49 X183.950 Y33.043 Z-22.758 
+N50 G01 X183.950 Y26.886 Z-14.877 F1989 
+N51 X183.950 Y26.270 Z-14.089 
+N52 X183.950 Y16.420 Z-1.481 
+N53 X183.950 Y12.994 Z2.903 
+N54 X183.950 Y3.144 Z15.511 
+N55 X183.950 Y-3.013 Z23.391 
+N56 G00 X183.950 Y8.804 Z32.631 
+RAPORT("T44444","Side Milling:121 End")
+N58 ;trailer : concat=None
+; points cnt = 6
+N59 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N60 FGROUP()
+N61 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:122
+N13 ; OPER. DESCR.: Semi Finishing shroud leading side KEE
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:02.221720
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:122")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:122 - Semi Finishing shroud leading side KEE ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A307.9800
+N36 TRAORI
+N37 G54 D3
+N38 D3 
+N39 TRANS  A=R16
+STOPRE
+E_ZDARZ=400003
+;ACS_PREFINISH_SHROUD=7740643
+STOPRE
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A307.9800 F10000
+N45 TRAORI
+N46 G54 D3
+N47 TRANS  A=R16
+N48 G00 X232.117 Y1.634 Z41.808 A307.9800 B0.0000 
+N49 M346 ; chlodziwo mgla
+N50 X232.117 Y-10.190 Z32.577 
+N51 G01 X232.117 Y-4.033 Z24.697 F1989 
+N52 X232.117 Y-3.417 Z23.909 
+N53 X232.117 Y6.433 Z11.301 
+N54 X232.117 Y16.204 Z-1.206 
+N55 X232.117 Y26.055 Z-13.814 
+N56 X232.117 Y32.212 Z-21.694 
+N57 G00 X232.117 Y71.623 Z9.075 
+RAPORT("T44444","Side Milling:122 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:123
+N13 ; OPER. DESCR.: Semi Finishing root leading side FEAF
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:04.705630
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:123")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:123 - Semi Finishing root leading side FEAF ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A128.0200
+N36 TRAORI
+N37 G54 D4
+N38 D4 
+STOPRE
+E_ZDARZ=400002
+;ACS_PREFINISH_ROOT=7740643
+STOPRE
+N39 ; DELTA A > 40.1
+N40 TRAFOOF
+N41 STOPRE
+N42 G0 G53 D0 Z265.000
+N43 G1 G53 A128.0200 F10000
+N44 TRAORI
+N45 G54 D4
+N46 TRANS 
+N47 G00 X155.450 Y-79.788 Z1.527 A128.0200 B0.0000 
+N48 M346 ; chlodziwo mgla
+N49 X155.450 Y-40.399 Z32.324 
+N50 G01 X155.450 Y-34.242 Z24.444 F1989 
+N51 X155.450 Y-33.626 Z23.656 
+N52 X155.450 Y-23.776 Z11.048 
+N53 X155.450 Y-20.368 Z6.686 
+N54 X155.450 Y-10.517 Z-5.922 
+N55 X155.450 Y-4.361 Z-13.802 
+N56 G00 X155.450 Y-16.178 Z-23.041 
+RAPORT("T44444","Side Milling:123 End")
+N58 ;trailer : concat=None
+; points cnt = 6
+N59 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N60 FGROUP()
+N61 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:124
+N13 ; OPER. DESCR.: Semi Finishing root leading side FEAB
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:06.941903
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:124")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:124 - Semi Finishing root leading side FEAB ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A128.0200
+N36 TRAORI
+N37 G54 D5
+N38 D5 
+STOPRE
+E_ZDARZ=400002
+;ACS_PREFINISH_ROOT=7740643
+STOPRE
+N39 ; DELTA A > 40.1
+N40 TRAFOOF
+N41 STOPRE
+N42 G0 G53 D0 Z265.000
+N43 G1 G53 A128.0200 F10000
+N44 TRAORI
+N45 G54 D5
+N46 TRANS 
+N47 G00 X183.950 Y-50.249 Z23.085 A128.0200 B0.0000 
+N48 M346 ; chlodziwo mgla
+N49 X183.950 Y-38.432 Z32.324 
+N50 G01 X183.950 Y-32.275 Z24.444 F1989 
+N51 X183.950 Y-31.659 Z23.656 
+N52 X183.950 Y-21.809 Z11.048 
+N53 X183.950 Y-18.400 Z6.684 
+N54 X183.950 Y-8.549 Z-5.924 
+N55 X183.950 Y-2.392 Z-13.804 
+N56 G00 X183.950 Y-14.209 Z-23.043 
+RAPORT("T44444","Side Milling:124 End")
+N58 ;trailer : concat=None
+; points cnt = 6
+N59 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N60 FGROUP()
+N61 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:125
+N13 ; OPER. DESCR.: Semi Finishing shroud leading side KEA
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:09.201642
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:125")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:125 - Semi Finishing shroud leading side KEA ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A127.9800
+N36 TRAORI
+N37 G54 D6
+N38 D6 
+N39 TRANS  A=R17
+STOPRE
+E_ZDARZ=400003
+;ACS_PREFINISH_SHROUD=7740643
+STOPRE
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A127.9800 F10000
+N45 TRAORI
+N46 G54 D6
+N47 TRANS  A=R17
+N48 G00 X232.117 Y0.747 Z-42.186 A127.9800 B0.0000 
+N49 M346 ; chlodziwo mgla
+N50 X232.117 Y12.570 Z-32.955 
+N51 G01 X232.117 Y6.414 Z-25.075 F1989 
+N52 X232.117 Y5.798 Z-24.287 
+N53 X232.117 Y-4.053 Z-11.679 
+N54 X232.117 Y-13.805 Z0.803 
+N55 X232.117 Y-23.655 Z13.412 
+N56 X232.117 Y-29.812 Z21.292 
+N57 G00 X232.117 Y-69.223 Z-9.478 
+RAPORT("T44444","Side Milling:125 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:126
+N13 ; OPER. DESCR.: Semi Finishing shroud leading side KH
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:11.902255
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:126")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:126 - Semi Finishing shroud leading side KH ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A359.9800
+N36 TRAORI
+N37 G54 D7
+N38 D7 
+N39 TRANS  A=R11
+STOPRE
+E_ZDARZ=400003
+;ACS_PREFINISH_SHROUD=7740643
+STOPRE
+N40 X232.117 Y-49.782 Z59.016 A359.9800 B0.0000 
+N41 M346 ; chlodziwo mgla
+N42 X232.117 Y-49.800 Z9.016 
+N43 G01 X232.117 Y-39.800 Z9.016 F1989 
+N44 X232.117 Y-38.800 Z9.016 
+N45 X232.117 Y-22.800 Z9.016 
+N46 X232.117 Y-1.883 Z9.016 
+N47 X232.117 Y14.117 Z9.016 
+N48 X232.117 Y24.117 Z9.016 
+N49 G00 X232.117 Y24.134 Z59.016 
+RAPORT("T44444","Side Milling:126 End")
+N51 ;trailer : concat=None
+; points cnt = 6
+N52 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N53 FGROUP()
+N54 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:127
+N13 ; OPER. DESCR.: Semi Finishing shroud leading side KR
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:14.565227
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:127")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:127 - Semi Finishing shroud leading side KR ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A179.9837
+N36 TRAORI
+N37 G54 D8
+N38 D8 
+N39 TRANS  A=R14 B=R15
+STOPRE
+E_ZDARZ=400003
+;ACS_PREFINISH_SHROUD=7740643
+STOPRE
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A179.9837 F10000
+N45 TRAORI
+N46 G54 D8
+N47 TRANS  A=R14 B=R15
+N48 G00 X229.773 Y52.139 Z-58.437 A179.9837 B-3.5270 
+N49 M346 ; chlodziwo mgla
+N50 X232.130 Y52.200 Z-8.493 
+N51 G01 X232.130 Y42.200 Z-8.484 F1989 
+N52 X232.130 Y41.200 Z-8.483 
+N53 X232.130 Y25.200 Z-8.469 
+N54 X232.130 Y4.265 Z-8.451 
+N55 X232.130 Y-11.735 Z-8.437 
+N56 X232.130 Y-21.735 Z-8.428 
+N57 G00 X229.773 Y-21.796 Z-58.373 
+RAPORT("T44444","Side Milling:127 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:128
+N13 ; OPER. DESCR.: Semi Finishing root leading side FH
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:17.382693
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:128")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:128 - Semi Finishing root leading side FH ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A0.0200
+N36 TRAORI
+N37 G54 D9
+N38 D9 
+N39 TRANS  A=R10
+STOPRE
+E_ZDARZ=400002
+;ACS_PREFINISH_ROOT=7740643
+STOPRE
+N40 X180.517 Y40.067 Z59.016 A0.0200 B0.0000 
+N41 M346 ; chlodziwo mgla
+N42 X180.517 Y40.084 Z9.016 
+N43 G01 X180.517 Y30.084 Z9.016 F1989 
+N44 X180.517 Y29.084 Z9.016 
+N45 X180.517 Y13.084 Z9.016 
+N46 X180.517 Y-11.766 Z9.016 
+N47 X180.517 Y-27.766 Z9.016 
+N48 X180.517 Y-36.766 Z9.016 
+N49 G00 X180.517 Y-36.771 Z24.016 
+N50 X163.858 Y40.079 Z24.016 
+N51 X163.858 Y40.084 Z9.016 
+N52 G01 X163.858 Y30.084 Z9.016 F1989 
+N53 X163.858 Y29.084 Z9.016 
+N54 X163.858 Y13.084 Z9.016 
+N55 X163.858 Y-11.766 Z9.016 
+N56 X163.858 Y-27.766 Z9.016 
+N57 X163.858 Y-36.766 Z9.016 
+N58 G00 X163.858 Y-36.771 Z24.016 
+N59 X147.200 Y40.079 Z24.016 
+N60 X147.200 Y40.084 Z9.016 
+N61 G01 X147.200 Y30.084 Z9.016 F1989 
+N62 X147.200 Y29.084 Z9.016 
+N63 X147.200 Y13.084 Z9.016 
+N64 X147.200 Y-11.766 Z9.016 
+N65 X147.200 Y-27.766 Z9.016 
+N66 X147.200 Y-37.766 Z9.016 
+N67 G00 X147.200 Y-37.784 Z59.016 
+RAPORT("T44444","Side Milling:128 End")
+N69 ;trailer : concat=None
+; points cnt = 18
+N70 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N71 FGROUP()
+N72 TRAFOOF
+N10 ; PROGRAM NAME: 4444445
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:129
+N13 ; OPER. DESCR.: Semi Finishing root leading side FR
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:36:19.935669
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.9
+;  ae         : 20.0
+;  lean_angle : 0.02
+;  fin_offset : 0.2
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:129")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:129 - Semi Finishing root leading side FR ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=940643
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S1989 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A180.0237
+N36 TRAORI
+N37 G54 D10
+N38 D10 
+N39 TRANS  A=R12 B=R13
+STOPRE
+E_ZDARZ=400002
+;ACS_PREFINISH_ROOT=7740643
+STOPRE
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A180.0237 F10000
+N45 TRAORI
+N46 G54 D10
+N47 TRANS  A=R12 B=R13
+N48 G00 X178.089 Y-44.076 Z-53.808 A180.0237 B-3.5270 
+N49 M346 ; chlodziwo mgla
+N50 X180.445 Y-44.050 Z-3.864 
+N51 G01 X180.445 Y-34.050 Z-3.872 F1989 
+N52 X180.445 Y-33.050 Z-3.873 
+N53 X180.445 Y-17.050 Z-3.887 
+N54 X180.445 Y7.822 Z-3.909 
+N55 X180.445 Y23.822 Z-3.923 
+N56 X180.445 Y32.822 Z-3.931 
+N57 G00 X179.738 Y32.814 Z-18.914 
+N58 X163.099 Y-44.058 Z-18.062 
+N59 X163.805 Y-44.050 Z-3.079 
+N60 G01 X163.805 Y-34.050 Z-3.087 F1989 
+N61 X163.805 Y-33.050 Z-3.088 
+N62 X163.805 Y-17.050 Z-3.102 
+N63 X163.805 Y7.822 Z-3.124 
+N64 X163.805 Y23.822 Z-3.138 
+N65 X163.805 Y32.822 Z-3.146 
+N66 G00 X163.099 Y32.814 Z-18.129 
+N67 X146.459 Y-44.057 Z-17.277 
+N68 X147.166 Y-44.049 Z-2.294 
+N69 G01 X147.166 Y-34.049 Z-2.302 F1989 
+N70 X147.166 Y-33.049 Z-2.303 
+N71 X147.166 Y-17.049 Z-2.317 
+N72 X147.166 Y7.823 Z-2.339 
+N73 X147.166 Y23.823 Z-2.353 
+N74 X147.166 Y33.823 Z-2.361 
+N75 G00 X144.809 Y33.797 Z-52.306 
+RAPORT("T44444","Side Milling:129 End")
+N77 ;trailer : concat=None
+; points cnt = 18
+N78 M347 ; mgla wyl
+N79 M347 ; mgla wyl
+N80 MSG (" --- KONIEC PROGRAMU --- ")
+N81 TRANS
+N82 G54
+N83 FGROUP()
+N84 TRAFOOF
+N85 STOPRE
+N86 G0 G53 D0 Z290.0 M9 M5
+N87 G0 G53 Y150 A0 B0
+N88 M17

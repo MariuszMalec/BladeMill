@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BladeMill.BLL.Models.NcCodeCheck>
+
+    <h2>Errors</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label asp-for="First().NcProgramCheck"></label>
+                </th>
+                <th>
+                    <label asp-for="First().Message"></label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.NcProgramCheck
+                    </td>
+                    <td>
+                        @item.Message
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

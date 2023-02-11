@@ -1,0 +1,61 @@
+﻿@model BladeMill.BLL.Models.AppXmlConfFiles
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Application.Xml.Conf</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label asp-for="TOOL_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TOOL_LIST
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="TECHNOLOGY_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TECHNOLOGY_LIST
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="MACHINE_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.MACHINE_LIST
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="MFG_PROCESS_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.MFG_PROCESS_LIST
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="APP_RET_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.APP_RET_LIST
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="MEASURINGLAW_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.MEASURINGLAW_LIST
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="AUXCOMMAND_LIST"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.TOOL_LIST
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@await Component.InvokeAsync("ViewErrors", new { newMessage = Model.Message })*@

@@ -1,0 +1,95 @@
+;Alstom Power Elblag--------------------------
+;ACS_EXIST_FINISH_UNDERCUT=0
+;ACS_EXIST_FINISH_SLOT_DGA=0
+;ACS_EXIST_PREFINISH_AIRFOIL=0
+;-      PROGRAM GLOWNY 02 Z PODAJNIKIEM      -
+; PROGRAM NAME: D999999_01.mpf
+; ORDER       : D999999
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+;----------------------------------------
+N10 ;GOTO PROG_D99999911 ; SKOK DO PODPROGRAMU
+;N11 WP_CH
+;N12 WP_PREP
+N13 ;----------------------------------
+N14 G0 D0 G53 X-200 Y150 Z550 
+N15 ;
+N16 ;---- PODJAZD KONIKIEM DO NITA-----
+N17 ASTART:
+N18 STOPRE
+N19 E_ZDARZ=1 ; ACS - start obrobki
+N20 T_INI
+N21 T_START(1)
+; TYP MOCOWANIA : Grip&Zabierak
+M38
+R61=258.7
+;
+N22 G0 U=R61+10; dojazd przed klocek
+N23 M38
+N24 PEAKFW(1000)
+R99=$AA_IW[U]
+N25 PEAKBW
+N26 G1 U=R99+1 F150
+N27 PRESS_ON(900)
+;
+N28 PROG_D99999911:
+N29 EXTCALL("D99999911")
+;---------------------------------------------
+N30 PROG_D99999913:
+N31 EXTCALL("D99999913")
+;---------------------------------------------
+N32 PROG_D99999914:
+N33 EXTCALL("D99999914")
+;---------------------------------------------
+N34 PROG_D99999920:
+N35 EXTCALL("D99999920")
+;---------------------------------------------
+N36 PROG_D99999932:
+N37 EXTCALL("D99999932")
+;---------------------------------------------
+N38 PROG_D99999935:
+N39 EXTCALL("D99999935")
+;---------------------------------------------
+N40 PROG_D99999936:
+N41 EXTCALL("D99999936")
+;---------------------------------------------
+N42 PROG_D99999937:
+N43 EXTCALL("D99999937")
+;---------------------------------------------
+N44 PROG_D99999933:
+N45 EXTCALL("D99999933")
+;---------------------------------------------
+N46 PROG_D99999934:
+N47 EXTCALL("D99999934")
+;---------------------------------------------
+N48 PROG_D99999938:
+N49 EXTCALL("D99999938")
+;---------------------------------------------
+N50 PROG_D99999960:
+N51 EXTCALL("D99999960")
+;---------------------------------------------
+N52 PROG_D99999981:
+N53 EXTCALL("D99999981")
+;---------------------------------------------
+N54 PROG_D99999961:
+N55 EXTCALL("D99999961")
+;---------------------------------------------
+N56 G0 G53 Z550 D0
+N57 G0 X-200
+N58 M9
+N59 PRESS_OFF
+N60 G0 U499
+N61 M37
+N62 G04 F1
+N63 M38
+N64 G0 G53 X-200 A0 Y0 B0
+N65 STOPRE
+N66 E_ZDARZ=2 ; ACS - koniec obrobki
+N67 T_STOP(1)
+N68 R99=0
+;N69 WP_CH
+;N70 WP_PREP
+;N71 GOTOB ASTART
+N72 M38
+N73 M30

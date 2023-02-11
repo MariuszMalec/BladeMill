@@ -1,0 +1,42 @@
+﻿namespace BladeMill.BLL.Enums
+{
+    public enum CheckingNcOperationEnum
+    {
+        Check_Spindle,
+        CheckSyntaxError,
+        CheckSyntaxError_in_TRANS,
+        Check_4_or_5_axis_if_G41,
+        Check_G41_G42_G40,
+        Check_M17,
+        Check_M6,
+        Check_L300,
+        Check_TRAORI,
+        Check_TRANS_for_drilling,
+        Check_A360,
+        Check_Lenght_of_tool,
+        Check_L9006,
+        Check_M30,
+        Check_A_DC_360,
+        Check_EVENT_1,
+        Check_EVENT_2,
+        Check_EVENT_3,
+        Check_duplicate_tools,
+        Check_M348,
+        Check_limit_axis_Z,
+        Check_limit_axis_Y,
+        Check_preload,
+        Check_E_ZDARZ_1,
+        Check_E_ZDARZ_2,
+        Check_E_ZDARZ_3,
+        Check_GOTO,
+        Check_TRANS_X_R9,
+        Check_TRANS_X_R8,
+        Check_TRANS_X_R3,
+        Check_TRANS_X_R4,
+        Check_G54_D3,
+        Check_G54_D1,
+        Check_G54_D4,
+        Check_G54_D2,
+        Check_G64
+    }
+}

@@ -1,0 +1,813 @@
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:144
+; OPER. DESCR.: Side Milling/Gratowanie
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:05.853565
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:144")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:144 - Side Milling/Gratowanie ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 X-200 Y150 Z550 B0
+N19 T="7758476"
+;RAPORT("TD999999","ToolChangeStart 7758476")
+N20 M6
+;RAPORT("TD999999","ToolChangeEnd")
+N21 STOPRE
+N22 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N23 ; (Preloading tool)
+N24 T="7756910"
+N25 S2546 M03
+N26 STOPRE
+N27 CYCLE832(0.1,1,1)
+N28 G0 G53 A302.0200 B-0.0000
+N29 TRAORI
+N30 G54 D1
+N31 D1 
+N32 $TC_SCP13[$P_TOOLNO,1]=$TC_SCP13[$P_TOOLNO,1]-$TC_SCP13[$P_TOOLNO,10]
+N33 IF $TC_SCP13[$P_TOOLNO,1]<$TC_SCP13[$P_TOOLNO,9] GOTOF STOP1
+N34 GOTOF DALEJ
+N35 STOP1:
+N36 MSG("!!! WYMIEN SZCZOTKE !!! GRANICA ZUZYCIA !!!")
+N37 M0
+N38 DALEJ:
+N39 ; DELTA A > 40.1
+N40 TRAFOOF
+N41 D1
+N42 STOPRE
+N43 G00 G54 Z181.000
+N44 G01 A302.0200 F10000
+N45 TRAORI
+N46 G54 D1
+N47 STOPRE
+N48 TRANS 
+N49 G00 X-174.041 Y59.822 Z-35.146 A302.0200 
+N50 M342 ; chlodziwo woda
+N51 X-174.041 Y40.321 Z-47.341 
+N52 G01 X-174.041 Y29.723 Z-30.380 F2036 
+N53 X-174.041 Y27.603 Z-26.988 
+N54 X-174.041 Y17.004 Z-10.027 
+N55 X-174.041 Y5.014 Z9.163 
+N56 X-174.041 Y-5.585 Z26.123 
+N57 X-174.041 Y-16.183 Z43.084 
+N58 G00 X-174.041 Y-3.465 Z51.038 
+N59 X-156.500 Y53.039 Z-39.387 
+N60 X-156.500 Y40.321 Z-47.341 
+N61 G01 X-156.500 Y29.723 Z-30.380 F2036 
+N62 X-156.500 Y27.603 Z-26.988 
+N63 X-156.500 Y17.004 Z-10.027 
+N64 X-156.500 Y5.014 Z9.163 
+N65 X-156.500 Y-5.585 Z26.123 
+N66 X-156.500 Y-16.183 Z43.084 
+N67 G00 X-156.500 Y3.318 Z55.279 
+;RAPORT("TD999999","Side Milling:144 End")
+;trailer : concat=None
+; points cnt = 12
+N69 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N70 FGROUP()
+N71 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:145
+; OPER. DESCR.: deburring root suction side FH
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:08.988578
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:145")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:145 - deburring root suction side FH ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A0.0200 B-0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 X-174.041 Y52.397 Z31.283 A0.0200 
+N30 M342 ; chlodziwo woda
+N31 X-174.041 Y52.405 Z7.283 
+N32 G01 X-174.041 Y32.405 Z7.283 F2036 
+N33 X-174.041 Y28.405 Z7.283 
+N34 X-174.041 Y8.405 Z7.283 
+N35 X-174.041 Y-17.997 Z7.283 
+N36 X-174.041 Y-37.997 Z7.283 
+N37 X-174.041 Y-57.997 Z7.283 
+N38 G00 X-174.041 Y-58.002 Z22.283 
+N39 X-156.500 Y52.400 Z22.283 
+N40 X-156.500 Y52.405 Z7.283 
+N41 G01 X-156.500 Y32.405 Z7.283 F2036 
+N42 X-156.500 Y28.405 Z7.283 
+N43 X-156.500 Y8.405 Z7.283 
+N44 X-156.500 Y-17.997 Z7.283 
+N45 X-156.500 Y-37.997 Z7.283 
+N46 X-156.500 Y-57.997 Z7.283 
+N47 G00 X-156.500 Y-58.005 Z31.283 
+;RAPORT("TD999999","Side Milling:145 End")
+;trailer : concat=None
+; points cnt = 12
+N49 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N50 FGROUP()
+N51 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:146
+; OPER. DESCR.: deburring root suction side FEA
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:11.104286
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:146")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:146 - deburring root suction side FEA ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A122.0200 B0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A122.0200 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-156.500 Y-58.693 Z35.228 A122.0200 
+N40 M342 ; chlodziwo woda
+N41 X-156.500 Y-40.040 Z46.893 
+N42 G01 X-156.500 Y-29.442 Z29.932 F2036 
+N43 X-156.500 Y-27.322 Z26.540 
+N44 X-156.500 Y-16.724 Z9.579 
+N45 X-156.500 Y-4.738 Z-9.603 
+N46 X-156.500 Y5.861 Z-26.564 
+N47 X-156.500 Y16.459 Z-43.525 
+N48 G00 X-156.500 Y-2.194 Z-55.190 
+;RAPORT("TD999999","Side Milling:146 End")
+;trailer : concat=None
+; points cnt = 6
+N50 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N51 FGROUP()
+N52 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:147
+; OPER. DESCR.: deburring root suction side FR
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:13.271953
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:147")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:147 - deburring root suction side FR ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A180.0025 B-1.7935
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A180.0025 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-174.756 Y-52.128 Z-30.163 A180.0025 B-1.7935 
+N40 M342 ; chlodziwo woda
+N41 X-174.005 Y-52.129 Z-6.174 
+N42 G01 X-174.005 Y-32.129 Z-6.181 F2036 
+N43 X-174.005 Y-28.129 Z-6.182 
+N44 X-174.005 Y-8.129 Z-6.188 
+N45 X-174.005 Y18.278 Z-6.196 
+N46 X-174.005 Y38.278 Z-6.202 
+N47 X-174.005 Y58.278 Z-6.208 
+N48 G00 X-174.475 Y58.279 Z-21.201 
+N49 X-156.942 Y-52.128 Z-21.716 
+N50 X-156.472 Y-52.129 Z-6.723 
+N51 G01 X-156.472 Y-32.129 Z-6.730 F2036 
+N52 X-156.472 Y-28.129 Z-6.731 
+N53 X-156.472 Y-8.129 Z-6.737 
+N54 X-156.472 Y18.278 Z-6.745 
+N55 X-156.472 Y38.278 Z-6.751 
+N56 X-156.472 Y58.278 Z-6.757 
+N57 G00 X-157.223 Y58.279 Z-30.745 
+;RAPORT("TD999999","Side Milling:147 End")
+;trailer : concat=None
+; points cnt = 12
+N59 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N60 FGROUP()
+N61 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:148
+; OPER. DESCR.: deburring root suction side KR
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:15.404110
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:148")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:148 - deburring root suction side KR ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A179.9624 B-1.7935
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A179.9624 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-216.470 Y60.144 Z-28.923 A179.9624 B-1.7935 
+N40 M342 ; chlodziwo woda
+N41 X-215.719 Y60.160 Z-4.935 
+N42 G01 X-215.719 Y40.160 Z-4.928 F2036 
+N43 X-215.719 Y36.160 Z-4.927 
+N44 X-215.719 Y16.160 Z-4.921 
+N45 X-215.719 Y-10.247 Z-4.913 
+N46 X-215.719 Y-30.247 Z-4.907 
+N47 X-215.719 Y-50.247 Z-4.901 
+N48 G00 X-216.470 Y-50.263 Z-28.889 
+;RAPORT("TD999999","Side Milling:148 End")
+;trailer : concat=None
+; points cnt = 6
+N50 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N51 FGROUP()
+N52 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:149
+; OPER. DESCR.: deburring root suction side KEA
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:17.524144
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:149")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:149 - deburring root suction side KEA ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A121.9800 B0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A121.9800 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-215.722 Y-2.200 Z-55.180 A121.9800 
+N40 M342 ; chlodziwo woda
+N41 X-215.722 Y16.461 Z-43.528 
+N42 G01 X-215.722 Y5.863 Z-26.568 F2036 
+N43 X-215.722 Y3.743 Z-23.175 
+N44 X-215.722 Y-6.855 Z-6.214 
+N45 X-215.722 Y-16.724 Z9.579 
+N46 X-215.722 Y-27.322 Z26.540 
+N47 X-215.722 Y-37.921 Z43.501 
+N48 G00 X-215.722 Y-56.582 Z31.849 
+;RAPORT("TD999999","Side Milling:149 End")
+;trailer : concat=None
+; points cnt = 6
+N50 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N51 FGROUP()
+N52 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:150
+; OPER. DESCR.: deburring root suction side KH
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:19.686232
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:150")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:150 - deburring root suction side KH ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A359.9800 B0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 X-215.722 Y-61.989 Z31.283 A359.9800 
+N30 M342 ; chlodziwo woda
+N31 X-215.722 Y-61.997 Z7.283 
+N32 G01 X-215.722 Y-41.997 Z7.283 F2036 
+N33 X-215.722 Y-37.997 Z7.283 
+N34 X-215.722 Y-17.997 Z7.283 
+N35 X-215.722 Y8.405 Z7.283 
+N36 X-215.722 Y28.405 Z7.283 
+N37 X-215.722 Y48.405 Z7.283 
+N38 G00 X-215.722 Y48.414 Z31.283 
+;RAPORT("TD999999","Side Milling:150 End")
+;trailer : concat=None
+; points cnt = 6
+N40 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N41 FGROUP()
+N42 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:151
+; OPER. DESCR.: deburring root suction side KEE
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:21.875937
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:151")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:151 - deburring root suction side KEE ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A301.9800 B0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A301.9800 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-215.722 Y1.207 Z58.658 A301.9800 
+N40 M342 ; chlodziwo woda
+N41 X-215.722 Y-18.303 Z46.477 
+N42 G01 X-215.722 Y-7.704 Z29.516 F2036 
+N43 X-215.722 Y-5.585 Z26.123 
+N44 X-215.722 Y5.014 Z9.163 
+N45 X-215.722 Y14.887 Z-6.638 
+N46 X-215.722 Y25.485 Z-23.599 
+N47 X-215.722 Y36.084 Z-40.560 
+N48 G00 X-215.722 Y55.593 Z-28.378 
+;RAPORT("TD999999","Side Milling:151 End")
+;trailer : concat=None
+; points cnt = 6
+N50 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N51 FGROUP()
+N52 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:152
+; OPER. DESCR.: deburring root suction side FR-FEE
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:24.034049
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:152")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:152 - deburring root suction side FR-FEE ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A270.0200 B-1.1214
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A270.0200 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-173.912 Y37.933 Z-54.406 A270.0200 B-1.1214 
+N40 M342 ; chlodziwo woda
+N41 X-173.462 Y14.937 Z-54.414 
+N42 G01 X-173.707 Y14.932 Z-34.416 F2036 
+N43 X-173.756 Y14.931 Z-30.416 
+N44 X-174.000 Y14.926 Z-10.418 
+N45 X-174.235 Y14.922 Z8.771 
+N46 X-174.479 Y14.917 Z28.770 
+N47 X-174.723 Y14.912 Z48.768 
+N48 G00 X-175.017 Y29.909 Z48.773 
+N49 X-156.219 Y30.277 Z-54.195 
+N50 X-155.925 Y15.280 Z-54.200 
+N51 G01 X-156.170 Y15.275 Z-34.201 F2036 
+N52 X-156.219 Y15.274 Z-30.202 
+N53 X-156.463 Y15.270 Z-10.203 
+N54 X-156.698 Y15.265 Z8.986 
+N55 X-156.942 Y15.260 Z28.984 
+N56 X-157.187 Y15.256 Z48.983 
+N57 G00 X-157.637 Y38.251 Z48.991 
+;RAPORT("TD999999","Side Milling:152 End")
+;trailer : concat=None
+; points cnt = 12
+N59 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N60 FGROUP()
+N61 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:153
+; OPER. DESCR.: deburring root suction side KR-KEE
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:26.216272
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:153")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:153 - deburring root suction side KR-KEE ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A269.9800 B-1.1209
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A269.9800 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-216.880 Y37.112 Z53.585 A269.9800 B-1.1209 
+N40 M342 ; chlodziwo woda
+N41 X-216.430 Y14.116 Z53.594 
+N42 G01 X-216.185 Y14.121 Z33.595 F2036 
+N43 X-216.136 Y14.122 Z29.595 
+N44 X-215.892 Y14.127 Z9.597 
+N45 X-215.699 Y14.130 Z-6.203 
+N46 X-215.454 Y14.135 Z-26.202 
+N47 X-215.210 Y14.140 Z-46.200 
+N48 G00 X-215.660 Y37.135 Z-46.208 
+;RAPORT("TD999999","Side Milling:153 End")
+;trailer : concat=None
+; points cnt = 6
+N50 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N51 FGROUP()
+N52 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:154
+; OPER. DESCR.: deburring root suction side FH-FEA
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:28.399487
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:154")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:154 - deburring root suction side FH-FEA ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A90.0200 B0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A90.0200 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-156.500 Y-37.605 Z53.363 A90.0200 
+N40 M342 ; chlodziwo woda
+N41 X-156.500 Y-15.605 Z53.371 
+N42 G01 X-156.500 Y-15.605 Z33.371 F2036 
+N43 X-156.500 Y-15.605 Z29.371 
+N44 X-156.500 Y-15.605 Z9.371 
+N45 X-156.500 Y-15.605 Z-9.811 
+N46 X-156.500 Y-15.605 Z-29.811 
+N47 X-156.500 Y-15.605 Z-49.811 
+N48 G00 X-156.500 Y-37.605 Z-49.819 
+;RAPORT("TD999999","Side Milling:154 End")
+;trailer : concat=None
+; points cnt = 6
+N50 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N51 FGROUP()
+N52 TRAFOOF
+; PROGRAM NAME: D99999981
+; ORDER       : D999999
+; OPER. NAME  : Side Milling:155
+; OPER. DESCR.: deburring root suction side KH-KEA
+; OPER. TYPE  : sideMill
+; GEO. OPTION : 1
+; MACHINE     : HSTM_300HD_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+; created:   2022-11-03 09:04:30.627754
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T006893P1018_-
+;  ap         : 0.0
+;  ae         : 35.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+;RAPORT("TD999999","Side Milling:155")
+N10 TRAFOOF
+N11 D0
+N12 G90 G94
+N13 G0 G53 D0 Z550
+N14 STOPRE
+M9 ; chlodziwo wyl
+; --- Side Milling:155 - deburring root suction side KH-KEA ---
+N16 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958476
+N17 TRAFOOF
+N18 G0 G53 D0 Z550 B0
+N19 STOPRE
+N20 MSG(" TLID=958476 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N21 S2546 M03
+N22 STOPRE
+N23 CYCLE832(0.1,1,1)
+N24 G0 G53 A89.9800 B-0.0000
+N25 TRAORI
+N26 G54 D1
+N27 D1 
+N28 ;
+N29 ; DELTA A > 40.1
+N30 TRAFOOF
+N31 D1
+N32 STOPRE
+N33 G00 G54 Z181.000
+N34 G01 A89.9800 F10000
+N35 TRAORI
+N36 G54 D1
+N37 STOPRE
+N38 TRANS 
+N39 G00 X-215.722 Y-37.605 Z-50.415 A89.9800 
+N40 M342 ; chlodziwo woda
+N41 X-215.722 Y-15.605 Z-50.422 
+N42 G01 X-215.722 Y-15.605 Z-30.422 F2036 
+N43 X-215.722 Y-15.605 Z-26.422 
+N44 X-215.722 Y-15.605 Z-6.422 
+N45 X-215.722 Y-15.605 Z9.371 
+N46 X-215.722 Y-15.605 Z29.371 
+N47 X-215.722 Y-15.605 Z49.371 
+N48 G00 X-215.722 Y-37.605 Z49.378 
+;RAPORT("TD999999","Side Milling:155 End")
+;trailer : concat=None
+; points cnt = 6
+N50 M9 ; chlodziwo wyl.
+N51 MSG (" --- KONIEC PODPROGRAMU --- ")
+N52 FGROUP()
+N53 TRAFOOF
+N54 STOPRE
+N55 G0 G53 D0 Z550.0 M9 M5
+N56 G0 G53 Y150 A0 B0
+N57 M17

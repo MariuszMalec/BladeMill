@@ -1,0 +1,38 @@
+﻿namespace BladeMill.BLL.Enums
+{
+    public enum InputXmlEnum
+    {
+        machine,
+        outfile,
+        catpart,
+        xmlpart,
+        xlspart,
+        catpartfirst,
+        catpartend,
+        xmlpartfirst,
+        xmlpartend,
+        Clampingmethod,
+        pinwelding,
+        millshroud,
+        readxls,
+        runconfiguration,
+        runbm,
+        runcmm,
+        createvcproject,
+        selectlanguage,
+        Prerawbox,
+        createraport,
+        RootMfgDir,
+        clickcancel,
+        BMTemplate,
+        BMTemplateFile,
+        IsXML,
+        TypeBlade,
+        middleTol,
+        admin,
+        ClampFromTemplate,
+        FIG_N,
+        infile,
+        TypeOfProcess
+    }
+}

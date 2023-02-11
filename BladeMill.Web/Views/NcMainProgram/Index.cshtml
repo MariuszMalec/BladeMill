@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BladeMill.BLL.Models.NcMainProgram>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="First().Id"></label>
+            </th>
+            <th>
+                <label asp-for="First().MainProgram"></label>
+            </th>
+            <th>
+                <label asp-for="First().Machine"></label>
+            </th>
+            <th>
+                <label asp-for="First().Clamping"></label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.MainProgram
+            </td>
+            <td>
+                @item.Machine
+            </td>
+            <td>
+                @item.Clamping
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

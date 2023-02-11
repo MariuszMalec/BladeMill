@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BladeMill.BLL</name>
+    </assembly>
+    <members>
+        <member name="T:BladeMill.BLL.Models.Applicationxmlconf">
+            <summary>
+            Dane z pliku Application.xml.conf,
+            ktory jest tutaj C:\Users\[SSO]\AppData\Roaming\BladeMill\[BM Version]\ConfigServer
+            </summary>
+        </member>
+        <member name="T:BladeMill.BLL.Models.InputDataXml">
+            <summary>
+            Dane z pliku inputdata.xml dla 3DViewer.exe , patrz tutaj C:/Temp
+            </summary>
+        </member>
+        <member name="T:BladeMill.BLL.Models.NcCodeCheck">
+            <summary>
+            Lista bledow dla danego programu NC
+            </summary>
+        </member>
+        <member name="T:BladeMill.BLL.Models.PathBase">
+            <summary>
+            Baza katalogow
+            </summary>
+        </member>
+        <member name="T:BladeMill.BLL.Models.ProgramExe">
+            <summary>
+            Obsluga programow pomocniczych
+            </summary>
+        </member>
+        <member name="T:BladeMill.BLL.Models.User">
+            <summary>
+            Lista uzytkownikow BladeMilla
+            </summary>
+        </member>
+        <member name="F:BladeMill.BLL.Services.NcCodeCheckService.fileService">
+            <summary>
+            Lista bledow dla danego programu NC
+            </summary>
+        </member>
+        <member name="M:BladeMill.BLL.Services.ToolNcService.LoadNCMultiple(System.String)">
+            <summary>
+            Wczytanie danych narzedziowych z programu glownego (tylko Huron!)
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BladeMill.BLL.SourceData.XMLDataBase">
+            <summary>
+            Tworzenie danych bazowych dla inputdata.xml
+            </summary>
+        </member>
+    </members>
+</doc>

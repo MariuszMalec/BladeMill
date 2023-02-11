@@ -1,0 +1,81 @@
+﻿@using System.IO
+@model IEnumerable<BladeMill.BLL.Models.Tool>
+
+    <h2>Show tools</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label asp-for="First().Id"></label>
+                </th>
+                <th>
+                    <label asp-for="First().BatchFile"></label>
+                </th>
+                <th>
+                    <label asp-for="First().Description"></label>
+                </th>
+                <th>
+                    <label asp-for="First().ToolSet"></label>
+                </th>
+                <th>
+                    <label asp-for="First().ToolID"></label>
+                </th>
+                <th>
+                    <label asp-for="First().ToolIDPreLoad"></label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {                
+                var existSubprogram = File.Exists(item.BatchFile);                
+                if (existSubprogram == false)
+                {
+                    <tr style = "background:red">
+                        <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.BatchFile
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.ToolSet
+                    </td>
+                    <td>
+                        @item.ToolID
+                    </td>
+                    <td>
+                        @item.ToolIDPreLoad
+                    </td>
+                </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.BatchFile
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.ToolSet
+                        </td>
+                        <td>
+                            @item.ToolID
+                        </td>
+                        <td>
+                            @item.ToolIDPreLoad
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<BladeMill.BLL.Models.Tool>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tools from current.xml</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+
+<form asp-page-handler=" " method="">
+    <button onclick="print()" class="btn btn-info">PRINT ME</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="First().Id"></label>
+            </th>
+            <th>
+                <label asp-for="First().BatchFile"></label>
+            </th>
+            <th>
+                <label asp-for="First().Description"></label>
+            </th>
+            <th>
+                <label asp-for="First().ToolSet"></label>
+            </th>
+            <th>
+                <label asp-for="First().ToolID"></label>
+            </th>
+            <th>
+                <label asp-for="First().ToolIDPreLoad"></label>
+            </th>
+            <th>
+                <label asp-for="First().Toollen"></label>
+            </th>
+            <th>
+                <label asp-for="First().ToolDiam"></label>
+            </th>
+            <th>
+                <label asp-for="First().ToolCrn"></label>
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.NcSpindle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NcFeedrate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NcMachine)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.BatchFile
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.ToolSet
+            </td>
+            <td>
+                @item.ToolID
+            </td>
+            <td>
+                @item.ToolIDPreLoad
+            </td>
+            <td>
+                @item.Toollen
+            </td>
+            <td>
+                @item.ToolDiam
+            </td>
+            <td>
+                @item.ToolCrn
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Spindle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feedrate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine)
+            </td>*@
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+        </tr>
+}
+    </tbody>
+</table>

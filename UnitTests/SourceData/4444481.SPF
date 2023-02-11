@@ -1,0 +1,1021 @@
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:167
+N13 ; OPER. DESCR.: Side Milling/Gratowanie
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:39:40.385880
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:167")
+N21 TRAFOOF
+N22 D0
+N23 G90 G94
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:167 - Side Milling/Gratowanie ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 MSG(" TLID=958677 D=40.0 R=0.0 Ang=0.0 Len=205.0 ")
+N30 TRAFOOF
+N31 D0
+N32 G0 G53 Z290 B0
+N33 G0 X200
+N34 G0 Y150
+N35 T="7758677"
+N36 G0 X500
+RAPORT("T44444","ToolChangeStart 7758677")
+N37 M6
+RAPORT("T44444","ToolChangeEnd")
+N38 ; (Preloading tool)
+N39 T="7757807"
+N40 G0 X200
+N41 STOPRE
+N42 S2466 M03
+N43 STOPRE
+N44 TOL(0.1,1,1)
+N45 G0 X176.953 A179.9837
+N46 TRAORI
+N47 G54 D1
+N48 D1 
+N49 $TC_SCP13[$P_TOOLNO,9]=-3
+N50 $TC_SCP13[$P_TOOLNO,1]=$TC_SCP13[$P_TOOLNO,1]-$TC_SCP13[$P_TOOLNO,10]
+N51 IF $TC_SCP13[$P_TOOLNO,1]<$TC_SCP13[$P_TOOLNO,9] GOTOF STOP1
+N52 GOTOF DALEJ
+N53 STOP1:
+N54 MSG("!!! WYMIEN SZCZOTKE !!! GRANICA ZUZYCIA !!!")
+N55 M0
+N56 DALEJ:
+N57 ; DELTA A > 40.1
+N58 TRAFOOF
+N59 STOPRE
+N60 G0 G53 D0 Z265.000
+N61 G1 G53 A179.9837 F10000
+N62 TRAORI
+N63 G54 D1
+N64 TRANS 
+N65 G00 X176.953 Y63.777 Z-40.235 A179.9837 B-3.5270 
+N66 M342 ; chlodziwo woda
+N67 X178.696 Y63.822 Z-3.276 
+N68 G01 X178.696 Y43.822 Z-3.259 F2000 
+N69 X178.696 Y39.822 Z-3.255 
+N70 X178.696 Y19.822 Z-3.238 
+N71 X178.696 Y-16.050 Z-3.207 
+N72 X178.696 Y-36.050 Z-3.189 
+N73 X178.696 Y-56.050 Z-3.172 
+N74 G00 X177.989 Y-56.068 Z-18.155 
+N75 X155.777 Y63.805 Z-17.211 
+N76 X156.484 Y63.823 Z-2.228 
+N77 G01 X156.484 Y43.823 Z-2.211 F2000 
+N78 X156.484 Y39.823 Z-2.207 
+N79 X156.484 Y19.823 Z-2.190 
+N80 X156.484 Y-16.049 Z-2.159 
+N81 X156.484 Y-36.049 Z-2.141 
+N82 X156.484 Y-56.049 Z-2.124 
+N83 G00 X154.740 Y-56.094 Z-39.083 
+RAPORT("T44444","Side Milling:167 End")
+N85 ;trailer : concat=None
+; points cnt = 12
+N86 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N87 FGROUP()
+N88 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:168
+N13 ; OPER. DESCR.: deburring root suction side FEAF
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:39:46.870914
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:168")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:168 - deburring root suction side FEAF ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A127.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A127.9800 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X161.750 Y-14.584 Z-59.844 A127.9800 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X161.750 Y14.581 Z-37.074 
+N51 G01 X161.750 Y2.268 Z-21.314 F2000 
+N52 X161.750 Y-0.195 Z-18.162 
+N53 X161.750 Y-12.508 Z-2.402 
+N54 X161.750 Y-22.688 Z10.628 
+N55 X161.750 Y-35.002 Z26.388 
+N56 X161.750 Y-47.315 Z42.149 
+N57 G00 X161.750 Y-76.479 Z19.379 
+RAPORT("T44444","Side Milling:168 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:169
+N13 ; OPER. DESCR.: deburring root suction side FEAB
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:39:50.374649
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:169")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:169 - deburring root suction side FEAB ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A127.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A127.9800 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X175.362 Y-12.615 Z-59.845 A127.9800 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X175.362 Y16.549 Z-37.076 
+N51 G01 X175.362 Y4.236 Z-21.316 F2000 
+N52 X175.362 Y1.773 Z-18.164 
+N53 X175.362 Y-10.540 Z-2.403 
+N54 X175.362 Y-20.721 Z10.628 
+N55 X175.362 Y-33.035 Z26.388 
+N56 X175.362 Y-45.348 Z42.149 
+N57 G00 X175.362 Y-74.512 Z19.379 
+RAPORT("T44444","Side Milling:169 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:170
+N13 ; OPER. DESCR.: deburring root suction side FH
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:39:53.925853
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:170")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:170 - deburring root suction side FH ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A359.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 X178.737 Y-67.753 Z45.418 A359.9800 B0.0000 
+N41 M342 ; chlodziwo woda
+N42 X178.737 Y-67.766 Z8.418 
+N43 G01 X178.737 Y-47.766 Z8.418 F2000 
+N44 X178.737 Y-43.766 Z8.418 
+N45 X178.737 Y-23.766 Z8.418 
+N46 X178.738 Y12.084 Z8.418 
+N47 X178.738 Y32.084 Z8.418 
+N48 X178.738 Y52.084 Z8.418 
+N49 G00 X178.738 Y52.089 Z23.418 
+N50 X156.500 Y-67.761 Z23.418 
+N51 X156.500 Y-67.766 Z8.418 
+N52 G01 X156.500 Y-47.766 Z8.418 F2000 
+N53 X156.500 Y-43.766 Z8.418 
+N54 X156.500 Y-23.766 Z8.418 
+N55 X156.500 Y12.084 Z8.418 
+N56 X156.500 Y32.084 Z8.418 
+N57 X156.500 Y52.084 Z8.418 
+N58 G00 X156.500 Y52.097 Z45.418 
+RAPORT("T44444","Side Milling:170 End")
+N60 ;trailer : concat=None
+; points cnt = 12
+N61 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N62 FGROUP()
+N63 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:171
+N13 ; OPER. DESCR.: deburring root suction side FEEF
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:39:57.617135
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:171")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:171 - deburring root suction side FEEF ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A307.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A307.9800 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X161.750 Y10.620 Z67.586 A307.9800 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X161.750 Y-18.545 Z44.817 
+N51 G01 X161.750 Y-6.231 Z29.056 F2000 
+N52 X161.750 Y-3.769 Z25.904 
+N53 X161.750 Y8.545 Z10.144 
+N54 X161.750 Y18.746 Z-2.913 
+N55 X161.750 Y31.059 Z-18.674 
+N56 X161.750 Y43.373 Z-34.434 
+N57 G00 X161.750 Y72.537 Z-11.665 
+RAPORT("T44444","Side Milling:171 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:172
+N13 ; OPER. DESCR.: deburring root suction side FEEB
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:01.189088
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:172")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:172 - deburring root suction side FEEB ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A307.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A307.9800 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X174.978 Y7.210 Z69.433 A307.9800 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X174.978 Y-21.955 Z46.664 
+N51 G01 X174.978 Y-9.641 Z30.903 F2000 
+N52 X174.978 Y-7.179 Z27.751 
+N53 X174.978 Y5.135 Z11.991 
+N54 X174.978 Y15.332 Z-1.061 
+N55 X174.978 Y27.646 Z-16.822 
+N56 X174.978 Y39.959 Z-32.582 
+N57 G00 X174.978 Y69.123 Z-9.813 
+RAPORT("T44444","Side Milling:172 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:173
+N13 ; OPER. DESCR.: deburring shroud suction side KEE
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:05.002924
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:173")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:173 - deburring shroud suction side KEE ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A308.0200
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A308.0200 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X226.317 Y79.359 Z-22.913 A308.0200 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X226.317 Y50.210 Z-45.703 
+N51 G01 X226.317 Y37.897 Z-29.943 F2000 
+N52 X226.317 Y35.434 Z-26.791 
+N53 X226.317 Y23.121 Z-11.031 
+N54 X226.317 Y6.578 Z10.144 
+N55 X226.317 Y-5.736 Z25.904 
+N56 X226.317 Y-18.049 Z41.665 
+N57 G00 X226.317 Y11.100 Z64.454 
+RAPORT("T44444","Side Milling:173 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:174
+N13 ; OPER. DESCR.: deburring shroud suction side KH
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:08.539375
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:174")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:174 - deburring shroud suction side KH ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A0.0200
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 X227.817 Y54.104 Z45.418 A0.0200 B0.0000 
+N41 M342 ; chlodziwo woda
+N42 X227.817 Y54.117 Z8.418 
+N43 G01 X227.817 Y34.117 Z8.418 F2000 
+N44 X227.817 Y30.117 Z8.418 
+N45 X227.817 Y10.117 Z8.418 
+N46 X227.817 Y-21.799 Z8.418 
+N47 X227.817 Y-41.799 Z8.418 
+N48 X227.817 Y-61.799 Z8.418 
+N49 G00 X227.817 Y-61.812 Z45.418 
+RAPORT("T44444","Side Milling:174 End")
+N51 ;trailer : concat=None
+; points cnt = 6
+N52 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N53 FGROUP()
+N54 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:175
+N13 ; OPER. DESCR.: deburring shroud suction side KEA
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:12.214154
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:175")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:175 - deburring shroud suction side KEA ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A128.0200
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A128.0200 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X226.317 Y-76.959 Z22.511 A128.0200 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X226.317 Y-47.811 Z45.301 
+N51 G01 X226.317 Y-35.497 Z29.540 F2000 
+N52 X226.317 Y-33.035 Z26.388 
+N53 X226.317 Y-20.721 Z10.628 
+N54 X226.317 Y-4.197 Z-10.522 
+N55 X226.317 Y8.116 Z-26.283 
+N56 X226.317 Y20.430 Z-42.043 
+N57 G00 X226.317 Y-8.719 Z-64.832 
+RAPORT("T44444","Side Milling:175 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:176
+N13 ; OPER. DESCR.: deburring shroud suction side KR
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:15.867818
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:176")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:176 - deburring shroud suction side KR ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A180.0237
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A180.0237 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X226.119 Y-51.754 Z-44.561 A180.0237 B-3.5270 
+N49 M342 ; chlodziwo woda
+N50 X227.863 Y-51.735 Z-7.602 
+N51 G01 X227.863 Y-31.735 Z-7.619 F2000 
+N52 X227.863 Y-27.735 Z-7.623 
+N53 X227.863 Y-7.735 Z-7.640 
+N54 X227.863 Y24.200 Z-7.668 
+N55 X227.863 Y44.200 Z-7.685 
+N56 X227.863 Y64.200 Z-7.703 
+N57 G00 X226.119 Y64.181 Z-44.662 
+RAPORT("T44444","Side Milling:176 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:177
+N13 ; OPER. DESCR.: deburring root suction side FR-FEEF
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:19.710997
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:177")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:177 - deburring root suction side FR-FEEF ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A270.0127
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A270.0127 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X158.765 Y55.703 Z55.413 A270.0127 B-2.7572 
+N49 M342 ; chlodziwo woda
+N50 X160.128 Y18.728 Z55.426 
+N51 G01 X160.703 Y18.749 Z35.434 F2000 
+N52 X160.819 Y18.753 Z31.436 
+N53 X161.394 Y18.774 Z11.444 
+N54 X161.770 Y18.788 Z-1.613 
+N55 X162.345 Y18.809 Z-21.605 
+N56 X162.920 Y18.831 Z-41.597 
+N57 G00 X161.557 Y55.806 Z-41.610 
+RAPORT("T44444","Side Milling:177 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:178
+N13 ; OPER. DESCR.: deburring root suction side FR-FEEB
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:23.358864
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:178")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:178 - deburring root suction side FR-FEEB ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A270.0127
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A270.0127 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X171.838 Y54.216 Z55.793 A270.0127 B-2.7572 
+N49 M342 ; chlodziwo woda
+N50 X173.202 Y17.242 Z55.806 
+N51 G01 X173.777 Y17.263 Z35.815 F2000 
+N52 X173.892 Y17.267 Z31.816 
+N53 X174.468 Y17.288 Z11.825 
+N54 X174.843 Y17.302 Z-1.228 
+N55 X175.419 Y17.323 Z-21.219 
+N56 X175.994 Y17.345 Z-41.211 
+N57 G00 X174.630 Y54.319 Z-41.224 
+RAPORT("T44444","Side Milling:178 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:179
+N13 ; OPER. DESCR.: deburring shroud suction side KR-KEE
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:27.073326
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:179")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:179 - deburring shroud suction side KR-KEE ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A270.0527
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A270.0527 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X226.307 Y57.873 Z-55.506 A270.0527 B-2.7587 
+N49 M342 ; chlodziwo woda
+N50 X227.671 Y20.898 Z-55.519 
+N51 G01 X227.096 Y20.876 Z-35.527 F2000 
+N52 X226.981 Y20.872 Z-31.528 
+N53 X226.405 Y20.851 Z-11.537 
+N54 X225.796 Y20.829 Z9.637 
+N55 X225.221 Y20.807 Z29.629 
+N56 X224.645 Y20.786 Z49.621 
+N57 G00 X223.281 Y57.761 Z49.634 
+RAPORT("T44444","Side Milling:179 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:180
+N13 ; OPER. DESCR.: deburring root suction side FH-FEAF
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:30.716994
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:180")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:180 - deburring root suction side FH-FEAF ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A89.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A89.9800 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X161.750 Y-58.374 Z-46.631 A89.9800 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X161.750 Y-21.374 Z-46.644 
+N51 G01 X161.750 Y-21.374 Z-26.644 F2000 
+N52 X161.750 Y-21.374 Z-22.644 
+N53 X161.750 Y-21.374 Z-2.644 
+N54 X161.750 Y-21.374 Z10.386 
+N55 X161.750 Y-21.374 Z30.386 
+N56 X161.750 Y-21.374 Z50.386 
+N57 G00 X161.750 Y-58.374 Z50.399 
+RAPORT("T44444","Side Milling:180 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:181
+N13 ; OPER. DESCR.: deburring root suction side FH-FEAB
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:34.646482
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:181")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:181 - deburring root suction side FH-FEAB ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A89.9800
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A89.9800 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X175.362 Y-56.407 Z-46.632 A89.9800 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X175.362 Y-19.407 Z-46.645 
+N51 G01 X175.362 Y-19.407 Z-26.645 F2000 
+N52 X175.362 Y-19.407 Z-22.645 
+N53 X175.362 Y-19.407 Z-2.645 
+N54 X175.362 Y-19.407 Z10.386 
+N55 X175.362 Y-19.407 Z30.386 
+N56 X175.362 Y-19.407 Z50.386 
+N57 G00 X175.362 Y-56.407 Z50.399 
+RAPORT("T44444","Side Milling:181 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 MSG (" --- GROUPED OF SUBPROGRAM --- ")
+N61 FGROUP()
+N62 TRAFOOF
+N10 ; PROGRAM NAME: 4444481
+N11 ; ORDER       : 44444
+N12 ; OPER. NAME  : Side Milling:182
+N13 ; OPER. DESCR.: deburring shroud suction side KH-KEA
+N14 ; OPER. TYPE  : sideMill
+N15 ; GEO. OPTION : 1
+N16 ; MACHINE     : SH_HX151_24_SIM840D
+N17 ;             : STARRAG_HECKERT_5axis_finish_milling_machine
+N18 ; CONTROL     : SINUMERIK 840D
+N19 ; created:   2022-11-03 13:40:38.464250
+;-------DODATKOWE DANE-------------------
+; PROGRAMISTA : Mariusz Malec
+; PARTID      : 139T004654P1015_-
+;  ap         : 0.0
+;  ae         : 30.0
+;  lean_angle : 0.02
+;  fin_offset : -0.4
+;----------------------------------------
+N20 ;----------------------------------------
+RAPORT("T44444","Side Milling:182")
+N21 TRAFOOF
+N22 D0
+N23 G0 G90 G94 Z260.0
+N24 STOPRE
+N25 M9 ; chlodziwo wyl
+N26 ; --- Side Milling:182 - deburring shroud suction side KH-KEA ---
+N28 ;ToolChange : concat=None ,current_tdmid=None, PP.tdmId=958677
+N29 TRAFOOF
+N30 D0
+N31 G0 G54 Z270.0
+N32 S2466 M03
+N33 STOPRE
+N34 TOL(0.1,1,1)
+N35 G0  A90.0200
+N36 TRAORI
+N37 G54 D1
+N38 D1 
+N39 ;
+N40 ; DELTA A > 40.1
+N41 TRAFOOF
+N42 STOPRE
+N43 G0 G53 D0 Z265.000
+N44 G1 G53 A90.0200 F10000
+N45 TRAORI
+N46 G54 D1
+N47 TRANS 
+N48 G00 X226.317 Y-56.407 Z54.373 A90.0200 B0.0000 
+N49 M342 ; chlodziwo woda
+N50 X226.317 Y-19.407 Z54.386 
+N51 G01 X226.317 Y-19.407 Z34.386 F2000 
+N52 X226.317 Y-19.407 Z30.386 
+N53 X226.317 Y-19.407 Z10.386 
+N54 X226.317 Y-19.407 Z-10.764 
+N55 X226.317 Y-19.407 Z-30.764 
+N56 X226.317 Y-19.407 Z-50.764 
+N57 G00 X226.317 Y-56.407 Z-50.777 
+RAPORT("T44444","Side Milling:182 End")
+N59 ;trailer : concat=None
+; points cnt = 6
+N60 M9 ; chlodziwo wyl.
+N61 M9 ; chlodziwo wyl.
+N62 MSG (" --- KONIEC PROGRAMU --- ")
+N63 TRANS
+N64 G54
+N65 FGROUP()
+N66 TRAFOOF
+N67 STOPRE
+N68 G0 G53 D0 Z290.0 M9 M5
+N69 G0 G53 Y150 A0 B0
+N70 M17

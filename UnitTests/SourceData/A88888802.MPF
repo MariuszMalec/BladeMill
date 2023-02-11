@@ -1,0 +1,114 @@
+;Alstom Power Elblag--------------------------
+;ACS_EXIST_FINISH_UNDERCUT=0
+;ACS_EXIST_PREFINISH_AIRFOIL=0
+;-      PROGRAM GLOWNY 02 Z PODAJNIKIEM      -
+; PROGRAM NAME: A888888_01.mpf
+; ORDER       : A888888
+; MACHINE     : HSTM_300_SIM840D_Py
+;             : HSTM300/500 - HAMUEL: 5-axis milling machine-SIM840D Traori PP_Script
+; CONTROL     : SINUMERIK 840D
+;----------------------------------------
+N10 ;GOTO PROG_A88888811 ; SKOK DO PODPROGRAMU
+N11 WP_CH
+N12 WP_PREP
+N13 ;----------------------------------
+N14 G0 D0 G53 X-200 Y150 Z550 
+N15 ;
+N16 ;---- PODJAZD KONIKIEM DO NITA-----
+N17 ASTART:
+N18 STOPRE
+N19 E_ZDARZ=1 ; ACS - start obrobki
+N20 T_INI
+N21 T_START(1)
+; TYP MOCOWANIA : Grip&PinWelding
+;
+R61=416.1
+;
+N22 G0 U=R61
+M38
+N23 PEAKFW(1000) ; dojazd kla do nita
+;
+N24 PROG_A88888809:
+N25 EXTCALL("A88888809")
+;---------------------------------------------
+N26 PROG_A88888811:
+N27 EXTCALL("A88888811")
+;---------------------------------------------
+N28 PROG_A88888813:
+N29 EXTCALL("A88888813")
+;---------------------------------------------
+N30 PROG_A88888814:
+N31 EXTCALL("A88888814")
+;---------------------------------------------
+N32 PROG_A88888820:
+N33 EXTCALL("A88888820")
+;---------------------------------------------
+N34 PROG_A88888832:
+N35 EXTCALL("A88888832")
+;---------------------------------------------
+N36 PROG_A88888840:
+N37 EXTCALL("A88888840")
+;---------------------------------------------
+N38 PROG_A88888841:
+N39 EXTCALL("A88888841")
+;---------------------------------------------
+N40 PROG_A88888847:
+N41 EXTCALL("A88888847")
+;---------------------------------------------
+N42 PROG_A88888849:
+N43 EXTCALL("A88888849")
+;---------------------------------------------
+N44 PROG_A88888833:
+N45 EXTCALL("A88888833")
+;---------------------------------------------
+N46 PROG_A88888834:
+N47 EXTCALL("A88888834")
+;---------------------------------------------
+N48 PROG_A88888838:
+N49 EXTCALL("A88888838")
+;---------------------------------------------
+N50 PROG_A88888851:
+N51 EXTCALL("A88888851")
+;---------------------------------------------
+N52 PROG_A88888852:
+N53 EXTCALL("A88888852")
+;---------------------------------------------
+N54 PROG_A88888839:
+N55 EXTCALL("A88888839")
+;---------------------------------------------
+N56 PROG_A88888860:
+N57 EXTCALL("A88888860")
+;---------------------------------------------
+N58 PROG_A88888881:
+N59 EXTCALL("A88888881")
+;---------------------------------------------
+N60 PROG_A88888861:
+N61 EXTCALL("A88888861")
+;---------------------------------------------
+N62 G0 G53 Z550 D0
+N63 M342 ; plukanie 
+N64 S10 M3; wlaczenie obrotow dla SCADy 
+N65 G1 G53 X-200 Y0 Z550 F2000
+N66 G1 A180 F400
+N67 G1 A0
+N68 G1 X-80 F1000
+N69 G1 A180 F400
+N70 G1 A0
+N71 G0 X-200
+N72 M9
+N73 M5; wylaczenie obrotow dla SCADy 
+N74 PRESS_OFF
+N75 M37
+N76 G0 U499
+N77 M38
+N78 G0 G53 Z550 D0
+N79 G0 G53 X-200 A0 Y0 B0
+N80 STOPRE
+N81 E_ZDARZ=2 ; ACS - koniec obrobki
+N82 T_STOP(1)
+N83 R99=0
+N84 WP_CH
+N85 WP_PREP
+N86 GOTOB ASTART
+N87 M38
+N88 M30

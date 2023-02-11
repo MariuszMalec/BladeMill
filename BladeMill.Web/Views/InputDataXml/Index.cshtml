@@ -1,0 +1,276 @@
+﻿@model IEnumerable<BladeMill.BLL.Models.InputDataXml>
+@using System.Collections.Generic;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div>
+    <h4>InputDatXml</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.machine)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.machine).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.outfile)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.outfile).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.catpart)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.catpart).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.xmlpart)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.xmlpart).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.xlspart)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.xlspart).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.catpartfirst)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.catpartfirst).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.catpartend)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.catpartend).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.xmlpartfirst)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.xmlpartfirst).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.xmlpartend)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.xmlpartend).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clampingmethod)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.Clampingmethod).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.pinwelding)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.pinwelding).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.millshroud)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.millshroud).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.readxls)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.readxls).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.runconfiguration)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.runconfiguration).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.runcmm)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.runcmm).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.createvcproject)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.createvcproject).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.selectlanguage)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.selectlanguage).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.selectlanguage)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.selectlanguage).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prerawbox)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.Prerawbox).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.createraport)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.createraport).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RootMfgDir)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.RootMfgDir).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.clickcancel)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.clickcancel).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BMTemplate)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.BMTemplate).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BMTemplateFile)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.BMTemplateFile).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsXML)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.IsXML).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsXML)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.IsXML).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeBlade)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.TypeBlade).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.middleTol)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.middleTol).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.admin)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.admin).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClampFromTemplate)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.ClampFromTemplate).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FIG_N)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.FIG_N).FirstOrDefault();
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.infile)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                @Model.Select(m => m.infile).FirstOrDefault();
+            }
+        </dd>
+    </dl>
+</div>
+

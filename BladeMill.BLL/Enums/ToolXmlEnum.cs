@@ -1,0 +1,41 @@
+﻿namespace BladeMill.BLL.Enums
+{
+    public enum ToolXmlEnum
+    {
+        AIRFOILTYPE,
+        BF,
+        BFISOTOL,
+        BFSYMTOL,
+        BH,
+        BHISOTOL,
+        BHSYMTOL,
+        BLADEORIENTATION,
+        BMDTYPE,
+        BMTemplate,
+        BROH,
+        CLAMPMETHOD,
+        CONTROL,
+        DFA,
+        DMFB,
+        DMVB,
+        DWGNR,
+        DWGREV,
+        DZA,
+        FIGSHROUD,
+        FIG_N,
+        FIRSTNAME,
+        FOURHOOK,
+        HDD,
+        HROH,
+        LASTNAME,
+        LROH,
+        MACHINE,
+        MATERIAL,
+        NBEA,
+        PRGNUMBER,
+        PROJECTNO,
+        SHROUDDRAWING,
+        STAGENO,
+        last_ident
+    }
+}

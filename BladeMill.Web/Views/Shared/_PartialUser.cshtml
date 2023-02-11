@@ -1,0 +1,12 @@
+﻿                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profile Users
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Index">BM users (z bazy)</a> <br />
+                                <a class="dropdown-item" asp-area="" asp-controller="UserFromService" asp-action="Index">BM users (z serwisu)</a> <br />
+                                <a class="dropdown-item" asp-area="" asp-controller="UserDto" asp-action="Index">BM users Mapper (z serwisu)</a> <br />
+                                <a class="dropdown-item" asp-area="" asp-controller="BMUser" asp-action="Index">BM users from database</a> <br />                          
+                            </div>
+                        </div>
