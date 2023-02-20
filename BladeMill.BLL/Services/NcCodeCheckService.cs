@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -44,6 +45,91 @@ namespace BladeMill.BLL.Services
 
         }
 
+        public List<NcCodeCheck> FindErrorsInMainProgram(string mainProgram)
+        {
+            if (File.Exists(mainProgram))
+            {
+                if (IsMainProgram(mainProgram))
+                {
+                    var listsuprogramms = fileService.GetSubprogramsListFromNc(mainProgram).ToList();
+
+                    var machineServiceFactory = new MachineServiceFactory();
+                    Machine = machineServiceFactory.CreateMachine(TypeOfFile.ncFile).GetMachine(mainProgram).MachineName;
+
+                    //Check subprogramms
+                    ConsoleUtility.WriteProgressBar(0);
+                    for (int i = 0; i < listsuprogramms.Count; i++)
+                    {
+                        if (File.Exists(listsuprogramms[i].SubProgramNameWithDir))
+                        {
+                            FindErrorsInNcFile(new FileNc() { Id = i, NameWithDir = listsuprogramms[i].SubProgramNameWithDir });
+                        }
+                        else
+                        {
+                            _errors.Add(new NcCodeCheck(0, mainProgram, "Check file", new List<string> { $"brak podprogramu! {listsuprogramms[i].SubProgramNameWithDir}" }));
+                            _logger.Warning($"Brak podprogramu! {listsuprogramms[i].SubProgramNameWithDir}");
+                        }
+                        ConsoleUtility.WriteProgressBar((i + 1) * 100 / listsuprogramms.Count, true);
+                        Thread.Sleep(1);
+                    }
+
+                    //Check main program
+                    Machine = machineServiceFactory.CreateMachine(TypeOfFile.ncFile).GetMachine(mainProgram).MachineName;
+                    if ((Machine.Contains(MachineEnum.HSTM500.ToString()) && !Machine.Contains(MachineEnum.HSTM500M.ToString())) ||
+                        Machine.Contains(MachineEnum.HSTM300HD.ToString()) ||
+                        Machine.Contains(MachineEnum.HX151.ToString()))
+                    {
+                        //trzeba sprawdzic czy wszystkie programy sa
+                        var checkFileExist = listsuprogramms.All(p => p.IsSubProgram == true);
+                        if (checkFileExist)
+                        {
+                            _errors.Add(new NcCodeCheck(1, mainProgram, CheckingNcOperationEnum.Check_preload.ToString(), CheckPreload(mainProgram)));
+                        }
+                        else
+                        {
+                            _logger.Warning($"Brak podprogramu. Nie sprawdzono przygotowania narzedzi!");
+                        }
+                    }
+                    if (Machine.Contains(MachineEnum.AVIA.ToString()))
+                    {
+                        _errors.Add(new NcCodeCheck(1, mainProgram, CheckingNcOperationEnum.Check_M30.ToString(), HaveToBeInNcCode(new FileNc() { Id = 1, NameWithDir = mainProgram }, "M30")));
+                        _errors.Add(new NcCodeCheck(2, mainProgram, CheckingNcOperationEnum.Check_E_ZDARZ_1.ToString(), HaveToBeInNcCode(new FileNc() { Id = 2, NameWithDir = mainProgram }, "E_ZDARZ=1")));
+                        _errors.Add(new NcCodeCheck(3, mainProgram, CheckingNcOperationEnum.Check_E_ZDARZ_2.ToString(), HaveToBeInNcCode(new FileNc() { Id = 3, NameWithDir = mainProgram }, "E_ZDARZ=2")));
+                    }
+                    if (Machine.Contains("HSTM"))
+                    {
+                        _errors.Add(new NcCodeCheck(4, mainProgram, CheckingNcOperationEnum.Check_GOTO.ToString(), CantBeInNcCode(new FileNc() { Id = 4, NameWithDir = mainProgram }, ";GOTO PROG_")));
+                    }
+                }
+            }
+            else
+            {
+
+            }
+            return new List<NcCodeCheck>() { };
+        }
+
+        public List<NcCodeCheck> FindErrorsInNcFile(FileNc fileNc)
+        {
+            var subProgram = fileNc.NameWithDir;
+            if (System.IO.File.Exists(subProgram))
+            {
+                if (!fileNc.IsMainProgram)
+                {
+                    Machine = fileNc.Machine.MachineName;
+                    GetErrorsForAll(subProgram, fileNc, fileNc.Id);
+                    GetErrorsAccMachine(subProgram, fileNc, Machine, fileNc.Id);
+                }
+            }
+            else
+            {
+                _errors.Add(new NcCodeCheck(fileNc.Id, subProgram, "Check file", new List<string> { "brak programu!" }));
+                _logger.Warning($"Brak programu {subProgram}");
+            }
+            return new List<NcCodeCheck>() { };
+        }//TODO nowe
+
+
         public async Task<List<NcCodeCheck>> FindErrorsInNcCode(string mainProgram)
         {
             if (File.Exists(mainProgram))
@@ -63,8 +149,8 @@ namespace BladeMill.BLL.Services
                         {
                             if (File.Exists(listsuprogramms[i].SubProgramNameWithDir))
                             {
-                                GetErrorsForAll(listsuprogramms[i].SubProgramNameWithDir, i);
-                                GetErrorsAccMachine(listsuprogramms[i].SubProgramNameWithDir, Machine, i);
+                                //GetErrorsForAll(listsuprogramms[i].SubProgramNameWithDir, i);
+                                //GetErrorsAccMachine(listsuprogramms[i].SubProgramNameWithDir, Machine, i);
                             }
                             else
                             {
@@ -93,13 +179,13 @@ namespace BladeMill.BLL.Services
                     }
                     if (Machine.Contains(MachineEnum.AVIA.ToString()))
                     {
-                        _errors.Add(new NcCodeCheck(1, mainProgram, CheckingNcOperationEnum.Check_M30.ToString(), HaveToBeInNcCode(mainProgram,"M30")));
-                        _errors.Add(new NcCodeCheck(2, mainProgram, CheckingNcOperationEnum.Check_E_ZDARZ_1.ToString(), HaveToBeInNcCode(mainProgram, "E_ZDARZ=1")));
-                        _errors.Add(new NcCodeCheck(3, mainProgram, CheckingNcOperationEnum.Check_E_ZDARZ_2.ToString(), HaveToBeInNcCode(mainProgram, "E_ZDARZ=2")));
+                        //_errors.Add(new NcCodeCheck(1, mainProgram, CheckingNcOperationEnum.Check_M30.ToString(), HaveToBeInNcCode(mainProgram,"M30")));
+                        //_errors.Add(new NcCodeCheck(2, mainProgram, CheckingNcOperationEnum.Check_E_ZDARZ_1.ToString(), HaveToBeInNcCode(mainProgram, "E_ZDARZ=1")));
+                        //_errors.Add(new NcCodeCheck(3, mainProgram, CheckingNcOperationEnum.Check_E_ZDARZ_2.ToString(), HaveToBeInNcCode(mainProgram, "E_ZDARZ=2")));
                     }
                     if (Machine.Contains("HSTM"))
                     {
-                        _errors.Add(new NcCodeCheck(4, mainProgram, CheckingNcOperationEnum.Check_GOTO.ToString(), CantBeInNcCode(mainProgram, ";GOTO PROG_")));
+                        //_errors.Add(new NcCodeCheck(4, mainProgram, CheckingNcOperationEnum.Check_GOTO.ToString(), CantBeInNcCode(mainProgram, ";GOTO PROG_")));
                     }
                 }
             }
@@ -132,8 +218,8 @@ namespace BladeMill.BLL.Services
                 if (!IsMainProgram(subProgram))
                 {
                     Machine = _machineSettings.GetMachine(subProgram).MachineName;
-                    GetErrorsForAll(subProgram, i);
-                    GetErrorsAccMachine(subProgram, Machine, i);
+                    //GetErrorsForAll(subProgram, i);
+                    //GetErrorsAccMachine(subProgram, Machine, i);
                 }
             }
             else
@@ -222,13 +308,15 @@ namespace BladeMill.BLL.Services
         public void ShowAllErrors()
         {
             var listErrors = _errors.Where(e => e.ListErrors.Count > 0).ToList();
+            var count = 0;
             if (listErrors.Count > 0)
             {
                 foreach (var error in listErrors)
                 {
                     foreach (var item in error.ListErrors)
                     {
-                        _logger.Error($"{error.NcProgramCheck} => {error.Message} => {item}");
+                        count++;
+                        _logger.Error($"{count} {error.NcProgramCheck} => {error.Message} => {item}");
                     }
                 }
             }
@@ -241,78 +329,78 @@ namespace BladeMill.BLL.Services
         {
             return _errors;
         }
-        public void GetErrorsForAll(string file, int i)
+        public void GetErrorsForAll(string file, FileNc fileNc, int i)
         {
-            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_Spindle.ToString(), CheckSpidle(file)));
-            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.CheckSyntaxError.ToString(), CheckSyntaxError(file)));
-            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.CheckSyntaxError_in_TRANS.ToString(), CheckSyntaxErrorInTRANS(file)));
-            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_4_or_5_axis_if_G41.ToString(), checkG41G40axisAB(file)));
+            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_Spindle.ToString(), CheckSpidle(fileNc)));
+            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.CheckSyntaxError.ToString(), CheckSyntaxError(fileNc)));
+            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.CheckSyntaxError_in_TRANS.ToString(), CheckSyntaxErrorInTRANS(fileNc)));
+            _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_4_or_5_axis_if_G41.ToString(), checkG41G40axisAB(fileNc)));
             if (!IsMainProgram(file))
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G41_G42_G40.ToString(), CheckG41G42G40(file)));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G41_G42_G40.ToString(), CheckG41G42G40(fileNc)));
         }
-        public void GetErrorsAccMachine(string file, string machine, int i)
+        public void GetErrorsAccMachine(string file, FileNc fileNc, string machine, int i)
         {
             if (!machine.Contains(MachineEnum.HURON.ToString()) && !machine.Contains(MachineEnum.HEC.ToString()))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M17.ToString(), HaveToBeInNcCode(file, "M17")));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M6.ToString(), HaveToBeInNcCode(file, "M6")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M17.ToString(), HaveToBeInNcCode(fileNc, "M17")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M6.ToString(), HaveToBeInNcCode(fileNc, "M6")));
             }
             if (machine.Contains(MachineEnum.HEC.ToString()))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M17.ToString(), HaveToBeInNcCode(file, "M17")));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_L300.ToString(), HaveToBeInNcCode(file, "L300")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M17.ToString(), HaveToBeInNcCode(fileNc, "M17")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_L300.ToString(), HaveToBeInNcCode(fileNc, "L300")));
             }
             if (machine.Contains("HSTM") || machine.Contains(MachineEnum.HX151.ToString()))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRAORI.ToString(), checkTraoriPosition(file, machine)));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_for_drilling.ToString(), checkTRANSForDrilling(file, machine)));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_A360.ToString(), CantBeInNcCode(file, "A360")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRAORI.ToString(), checkTraoriPosition(fileNc, machine)));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_for_drilling.ToString(), checkTRANSForDrilling(fileNc, machine)));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_A360.ToString(), CantBeInNcCode(fileNc, "A360")));
                 if (file.Contains("35.") || file.Contains("49."))
                 {
                     _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_E_ZDARZ_3.ToString(),
-                        HaveToBeInNcCode(file, "E_ZDARZ=3")));
+                        HaveToBeInNcCode(fileNc, "E_ZDARZ=3")));
                 }
                 if (file.Contains("33N"))
                 {
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R9.ToString(), checkCorrectPosition(file, "TRANS", "X=R9", "Spiral Milling Platform")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D3.ToString(), checkCorrectPosition(file, "G54", "D3", "Spiral Milling Platform")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R3.ToString(), checkCorrectPosition(file, "TRANS", "X=R3", "Spiral Finish Transition")));                    
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D1.ToString(), checkCorrectPosition(file, "G54", "D1", "Spiral Finish Transition")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R9.ToString(), checkCorrectPosition(fileNc, "TRANS", "X=R9", "Spiral Milling Platform")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D3.ToString(), checkCorrectPosition(fileNc, "G54", "D3", "Spiral Milling Platform")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R3.ToString(), checkCorrectPosition(fileNc, "TRANS", "X=R3", "Spiral Finish Transition")));                    
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D1.ToString(), checkCorrectPosition(fileNc, "G54", "D1", "Spiral Finish Transition")));
                 }
                 if (file.Contains("33B"))
                 {
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R8.ToString(), checkCorrectPosition(file, "TRANS", "X=R8", "Spiral Milling Platform")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D4.ToString(), checkCorrectPosition(file, "G54", "D4", "Spiral Milling Platform")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R4.ToString(), checkCorrectPosition(file, "TRANS", "X=R4", "Spiral Finish Transition")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D2.ToString(), checkCorrectPosition(file, "G54", "D2", "Spiral Finish Transition")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R8.ToString(), checkCorrectPosition(fileNc, "TRANS", "X=R8", "Spiral Milling Platform")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D4.ToString(), checkCorrectPosition(fileNc, "G54", "D4", "Spiral Milling Platform")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_X_R4.ToString(), checkCorrectPosition(fileNc, "TRANS", "X=R4", "Spiral Finish Transition")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G54_D2.ToString(), checkCorrectPosition(fileNc, "G54", "D2", "Spiral Finish Transition")));
                 }
             }
             if (machine.Contains(MachineEnum.HX151.ToString()))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_Lenght_of_tool.ToString(), Checklenghtoftool(file)));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_Lenght_of_tool.ToString(), Checklenghtoftool(fileNc)));
             }
             if (machine.Contains("HURON"))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_L9006.ToString(), HaveToBeInNcCode(file, "L9006")));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M30.ToString(), HaveToBeInNcCode(file, "M30")));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_A_DC_360.ToString(), CantBeInNcCode(file, "A=DC(360.")));
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_for_drilling.ToString(), checkTRANSForDrilling(file, machine)));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_L9006.ToString(), HaveToBeInNcCode(fileNc, "L9006")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M30.ToString(), HaveToBeInNcCode(fileNc, "M30")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_A_DC_360.ToString(), CantBeInNcCode(fileNc, "A=DC(360.")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_TRANS_for_drilling.ToString(), checkTRANSForDrilling(fileNc, machine)));
                 if (IsMainProgram(file))
                 {
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_EVENT_1.ToString(), HaveToBeInNcCode(file, "EVENT(1)")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_EVENT_2.ToString(), HaveToBeInNcCode(file, "EVENT(2)")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_EVENT_3.ToString(), HaveToBeInNcCode(file, "EVENT(3)")));
-                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_duplicate_tools.ToString(), Checkduplicatekubkow(file)));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_EVENT_1.ToString(), HaveToBeInNcCode(fileNc, "EVENT(1)")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_EVENT_2.ToString(), HaveToBeInNcCode(fileNc, "EVENT(2)")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_EVENT_3.ToString(), HaveToBeInNcCode(fileNc, "EVENT(3)")));
+                    _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_duplicate_tools.ToString(), Checkduplicatekubkow(fileNc)));
                     //TODO checkG1G2, checkG1G3
                 }
             }
             if (machine.Contains(MachineEnum.HSTM500M.ToString()))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M348.ToString(), CantBeInNcCode(file, "M348")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_M348.ToString(), CantBeInNcCode(fileNc, "M348")));
             }
             if (machine.Contains(MachineEnum.AVIA.ToString()))
             {
-                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G64.ToString(), HaveToBeInNcCode(file, "G64")));
+                _errors.Add(new NcCodeCheck(i, file, CheckingNcOperationEnum.Check_G64.ToString(), HaveToBeInNcCode(fileNc, "G64")));
             }
 
             //TODO nie uzywane narazie od 2022-10-27
@@ -376,10 +464,10 @@ namespace BladeMill.BLL.Services
             }
             return false;
         }
-        public List<string> checkTRANSForDrilling(string fileName, string machine)
+        public List<string> checkTRANSForDrilling(FileNc fileName, string machine)
         {
             var errors = new List<string>();
-            var lines = File.ReadAllLines(fileName);
+            var lines = File.ReadAllLines(fileName.NameWithDir);
             string checkline = "";
             string drill = "";
             string searchtext = "Y";
@@ -451,12 +539,12 @@ namespace BladeMill.BLL.Services
             }
             return false;
         }
-        public List<string> Checkduplicatekubkow(string fileName)
+        public List<string> Checkduplicatekubkow(FileNc fileName)
         {
             var errors = new List<string>();
-            if (File.Exists(fileName))
+            if (File.Exists(fileName.NameWithDir))
             {
-                IEnumerable<string> lines = File.ReadAllLines(fileName);
+                IEnumerable<string> lines = File.ReadAllLines(fileName.NameWithDir);
                 IList<string> listOfLine = new List<string>();
                 int count = 0;
                 foreach (var line in lines) { count++; listOfLine.Add(line); }
@@ -517,12 +605,12 @@ namespace BladeMill.BLL.Services
             }
             return listboolwarning;
         }
-        private List<string> checkTraoriPosition(string file, string machine)
+        private List<string> checkTraoriPosition(FileNc file, string machine)
         {
             var errors = new List<string>();
-            if (File.Exists(file) && machine != "HURON" && machine != "HEC" && machine != "AVIA" && !file.Contains("61."))
+            if (File.Exists(file.NameWithDir) && machine != "HURON" && machine != "HEC" && machine != "AVIA" && !file.NameWithDir.Contains("61."))
             {
-                var lines = File.ReadAllLines(file);
+                var lines = File.ReadAllLines(file.NameWithDir);
                 string searchTRAFOOF = "TRAFOOF";
                 string searchTRAORI = "TRAORI";
                 int count = 0;
@@ -552,7 +640,7 @@ namespace BladeMill.BLL.Services
                             if (listline[nmb + i].Contains("X") & listline[nmb + i].Contains("Y") & listline[nmb + i].Contains("Z") & !listline[nmb + i].Contains("G53"))
                             {
                                 errors.Add($"=> BRAK TRAORI, PATRZ BLOK: {listline[nmb + i]}");
-                                //break;
+                                break;
                             }
                         }
                     }
@@ -565,12 +653,12 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> checkG41G40axisAB(string file)
+        private List<string> checkG41G40axisAB(FileNc file)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
-                var lines = File.ReadAllLines(file);
+                var lines = File.ReadAllLines(file.NameWithDir);
                 int count = 0;
                 string searchtext1 = "G41";
                 string searchtext2 = "G42";
@@ -631,12 +719,12 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> CheckG41G42G40(string file)
+        private List<string> CheckG41G42G40(FileNc file)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (System.IO.File.Exists(file.NameWithDir))
             {
-                var nc = ncService.GetNcLinesFromNC(file);
+                var nc = file.Lines;
                 var resultG41 = nc.Count(nc => nc.Line.Contains("G41"));
                 var resultG42 = nc.Count(nc => nc.Line.Contains("G42"));
                 var resultG40 = nc.Count(nc => nc.Line.Contains("G40"));
@@ -657,12 +745,12 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        public List<string> CheckSpidle(string file)
+        public List<string> CheckSpidle(FileNc file)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
-                var nc = ncService.GetNcLinesFromNC(file);
+                var nc = file.Lines;
                 var valid = nc.Any(n => (n.Line.Contains("M03") || n.Line.Contains("M3")) && n.Line.Contains("S"));
                 if (valid == false)
                 {
@@ -672,12 +760,12 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> CantBeInNcCode(string file, string word)
+        private List<string> CantBeInNcCode(FileNc file, string word)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
-                var nc = ncService.GetNcLinesFromNC(file);
+                var nc = file.Lines;
                 var count = nc.Select(n => nc.Count(nc => nc.Line.Contains(word)));
                 if (count.FirstOrDefault() > 0)
                 {
@@ -687,12 +775,12 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> HaveToBeInNcCode(string file, string word)
+        private List<string> HaveToBeInNcCode(FileNc file, string word)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
-                var nc = ncService.GetNcLinesFromNC(file);
+                var nc = file.Lines;
                 var count = nc.Select(n => nc.Count(nc => nc.Line.Contains(word)));
                 if (count.FirstOrDefault() == 0)
                 {
@@ -702,15 +790,15 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> CheckSyntaxError(string file)
+        private List<string> CheckSyntaxError(FileNc file)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
                 var words = new List<string>() { "X", "Y", "Z", "A", "B", "F" };
                 foreach (string word in words)
                 {
-                    var nc = ncService.GetNcLinesFromNC(file);
+                    var nc = file.Lines;
                     var findXTostring = nc.Where(n => n.Line.Contains(word) &&
                                                       !n.Line.Contains("E_ZDARZ") &&
                                                       !n.Line.ToLower().Contains("sz") &&
@@ -730,7 +818,7 @@ namespace BladeMill.BLL.Services
                                                       !n.Line.Contains("OFFN") &&
                                                       !n.Line.Contains("GOTO") &&
                                                       !n.Line.ToLower().Contains("cycle60")).ToList();
-                    foreach (LineFromFile line in findXTostring)
+                    foreach (NcLine line in findXTostring)
                     {
                         string text = line.Line;
                         var count = text.ToLowerInvariant().Split(new string[] { word.ToLowerInvariant() }, StringSplitOptions.None).Count() - 1;
@@ -744,15 +832,15 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> CheckSyntaxErrorInTRANS(string file)
+        private List<string> CheckSyntaxErrorInTRANS(FileNc file)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
                 var words = new List<string>() { "X", "Y", "Z", "A", "B" };
                 foreach (string word in words)
                 {
-                    var nc = ncService.GetNcLinesFromNC(file);
+                    var nc = file.Lines;
                     var findXTostring = nc.Where(n => n.Line.Contains(word) &&
                                                       n.Line.Contains("TRANS") &&
                                                       !n.Line.Contains("E_ZDARZ") &&
@@ -766,7 +854,7 @@ namespace BladeMill.BLL.Services
                                                       !n.Line.ToLower().Contains("toolno") &&
                                                       !n.Line.ToLower().Contains(";") &&
                                                       !n.Line.ToLower().Contains("cycle60")).ToList();
-                    foreach (LineFromFile line in findXTostring)
+                    foreach (NcLine line in findXTostring)
                     {
                         _logger.Debug($"{line}");
                         string text = line.Line;
@@ -781,13 +869,13 @@ namespace BladeMill.BLL.Services
             }
             return errors;
         }
-        private List<string> Checklenghtoftool(string file)//only HX151
+        private List<string> Checklenghtoftool(FileNc file)//only HX151
         {
             var errors = new List<string>() { };
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
                 var toolNcService = new ToolNcService();
-                var toolSetLength = toolNcService.GetNcToollenFromNC(file);
+                var toolSetLength = toolNcService.GetNcToollenFromNC(file.NameWithDir);
                 double dlugoscnarzedzia = 0.0;
                 try
                 {
@@ -795,7 +883,7 @@ namespace BladeMill.BLL.Services
                 }
                 catch
                 {
-                    errors.Add($"Bledny format dlugosci narzedzia w MSG, patrz program : {file}");
+                    errors.Add($"Bledny format dlugosci narzedzia w MSG, patrz program : {file.NameWithDir}");
                 }
                 if (dlugoscnarzedzia > 205.0)
                 {
@@ -948,13 +1036,12 @@ namespace BladeMill.BLL.Services
             var delDuplitatesErrors = errors.Distinct();
             return delDuplitatesErrors.ToList();
         }
-
-        private List<string> checkCorrectPosition(string file, string searchText, string trans, string operation)
+        private List<string> checkCorrectPosition(FileNc file, string searchText, string trans, string operation)
         {
             var errors = new List<string>();
-            if (File.Exists(file))
+            if (File.Exists(file.NameWithDir))
             {
-                var lines = File.ReadAllLines(file);
+                var lines = File.ReadAllLines(file.NameWithDir);
                 string searchCurrentTrans = trans;
                 int count = 0;
                 List<int> countline = new List<int>(new int[] { });

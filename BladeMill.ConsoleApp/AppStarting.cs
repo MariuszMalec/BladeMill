@@ -39,7 +39,7 @@ namespace BladeMill.ConsoleApp
             _config = config;
         }
 
-        public void Run(string[] args)
+        public async void Run(string[] args)
         {
             //bez argumentow z appsetings.json testy
             if (args.Length == 0)
@@ -129,6 +129,8 @@ namespace BladeMill.ConsoleApp
                 //CheckAllNcCodes
                 //---------------------------------
                 //CheckAllNcCodes.Test(_log);
+                //CheckAllNcCodes.GeAll(_log);
+                CheckAllNcCodes.GetName(_log, @"c:/tempnc/8295201.NC");//8295201.NC, 1373201.MPF
 
                 //---------------------------------
                 // Wczytaj narzedzia

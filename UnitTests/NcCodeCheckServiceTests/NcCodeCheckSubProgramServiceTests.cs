@@ -1,4 +1,5 @@
 ﻿using BladeMill.BLL.Enums;
+using BladeMill.BLL.Models;
 using BladeMill.BLL.Services;
 using System;
 using System.IO;
@@ -38,7 +39,7 @@ namespace UnitTests.NcCodeCheckServiceTests
         [InlineData(CheckingNcOperationEnum.Check_G64)]
         public void FindErrorsInSubProgram_ForAvia_ReturnFalse_WhenMethodIsNotCall(CheckingNcOperationEnum checkMessage)
         {
-            _sut.FindErrorsInSubProgram(_subprogramAvia, 1);
+            _sut.FindErrorsInNcFile(new FileNc() { NameWithDir = _subprogramAvia });
             var messages = _sut.GetAllErrors();
             var result = messages.Any(s => s.Message.Contains(checkMessage.ToString()));
             Assert.True(result);
